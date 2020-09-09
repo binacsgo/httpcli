@@ -2,16 +2,18 @@
 Simple http client written in Go.
 
 
+> 为 JSON 交互定制
 
 ## 0. Quick Start
 
 ```go
-bs, err := httpcli.Get(url)
+var resp resp_struct{}
+err := httpcli.Get(url, &resp)
 if err != nil {
 	log.Printf("err = %+v\n", err)
 	// return
 }
-log.Printf("response:\n%s\n", string(bs[:]))
+log.Printf("response:\n%+v\n", resp)
 ```
 
 
@@ -19,16 +21,28 @@ log.Printf("response:\n%s\n", string(bs[:]))
 ## 1. Usage
 
 ```go
-bs, err := httpcli.Get(url)
+err := httpcli.Get(url, request, &response)
 ...
 
-bs, err := httpcli.Post(url, request.interface{})
+err := httpcli.Post(url, request, &response)
 ...
 
-bs, err := httpcli.GetSkipVerify(url)
+err := httpcli.Put(url, request, &response)
 ...
 
-bs, err := httpcli.PostSkipVerify(url, request.interface{})
+err := httpcli.Delete(url, request, &response)
+...
+
+err := httpcli.GetSkipVerify(url, request, &response)
+...
+
+err := httpcli.PostSkipVerify(url, request, &response)
+...
+
+err := httpcli.PutSkipVerify(url, request, &response)
+...
+
+err := httpcli.DeleteSkipVerify(url, request, &response)
 ...
 ```
 
