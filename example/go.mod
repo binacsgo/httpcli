@@ -2,4 +2,6 @@ module test
 
 go 1.14
 
-require github.com/binacsgo/httpcli master // indirect
+replace github.com/binacsgo/httpcli => ../
+
+require github.com/binacsgo/httpcli master
